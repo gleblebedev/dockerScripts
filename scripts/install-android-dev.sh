@@ -5,14 +5,14 @@ apt-get install -y wget openjdk-11-jdk android-sdk unzip
 
 GRADLE_VERSION=$1
 NDK_VERSION=$2
-wget https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip -P /tmp
+wget https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip --progress=bar:force:noscroll -P /tmp
 unzip -d /opt/gradle /tmp/gradle-${GRADLE_VERSION}-bin.zip
 ln -s /opt/gradle/gradle-${GRADLE_VERSION} /opt/gradle/latest
 GRADLE_HOME=/opt/gradle/latest
 PATH=${GRADLE_HOME}/bin:${PATH}
 rm -rf /tmp/gradle-${GRADLE_VERSION}-bin.zip
 
-wget https://dl.google.com/android/repository/commandlinetools-linux-7583922_latest.zip -P /tmp
+wget https://dl.google.com/android/repository/commandlinetools-linux-7583922_latest.zip --progress=bar:force:noscroll -P /tmp
 unzip -d /usr/lib/android-sdk/ /tmp/commandlinetools-linux-7583922_latest.zip
 yes | /usr/lib/android-sdk/cmdline-tools/bin/sdkmanager --licenses --sdk_root=/usr/lib/android-sdk/
 rm -rf /tmp/commandlinetools-linux-7583922_latest.zip
